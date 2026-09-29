@@ -23,7 +23,11 @@
 }
 
 .project-card img{
+  display:block;
   width:100%;
+  max-width:520px;
+  height:auto;
+  object-fit:cover;
   border-radius:16px;
 }
 
