@@ -1,13 +1,3 @@
-const menuBtn = document.getElementById('menuBtn');
-const nav = document.querySelector('.nav');
-menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
-document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-function sendToWhatsApp(e){
-  e.preventDefault();
-  const name=document.getElementById('name').value.trim();
-  const phone=document.getElementById('phone').value.trim();
-  const type=document.getElementById('type').value;
-  const message=document.getElementById('message').value.trim();
-  const text=`Hello Propsite24,%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AProperty: ${encodeURIComponent(type)}%0ARequirement: ${encodeURIComponent(message)}`;
-  window.open(`https://wa.me/919220889500?text=${text}`,'_blank');
-}
+const menu=document.querySelector('.menu');const nav=document.querySelector('#navLinks');if(menu)menu.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.thumb').forEach(btn=>btn.addEventListener('click',()=>{document.querySelector('#mainImage').src=btn.dataset.img;document.querySelectorAll('.thumb').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}));
+document.querySelector('#enquiryForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);const msg=`Hello Propsite24, I am interested in Haven Heights.%0AName: ${encodeURIComponent(f.get('name'))}%0APhone: ${encodeURIComponent(f.get('phone'))}%0AProperty: ${encodeURIComponent(f.get('type')||'Not selected')}%0AMessage: ${encodeURIComponent(f.get('message')||'')}`;window.open(`https://wa.me/919220889500?text=${msg}`,'_blank')});
